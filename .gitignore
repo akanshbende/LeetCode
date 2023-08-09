@@ -1,0 +1,7 @@
+temp.cpp
+
+*.exe
+
+/.vscode
+
+tempCodeRunnerFile.cpp
