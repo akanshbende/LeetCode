@@ -43,3 +43,19 @@ public:
         return head;
     }
 };
+
+// Another solution
+ListNode *getList(ListNode *head)
+    ListNode *slow = head;
+ListNode *fast = head;
+ListNode *prev = nullptr;
+while (fast && fast—next)
+    = slow;
+prev
+    slow = slow—next;
+fast = fast—next—next;
+if (prev nullptr)
+    head = nullptr;
+return = slow—next;
+prev + next delete slow;
+return head;
