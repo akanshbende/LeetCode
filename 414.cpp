@@ -11,28 +11,7 @@ int thirdMax(vector<int> &nums)
     map<int, int> m;
     int cnt = 1;
     auto maxNum = m.end();
-    // if (size == 1)
-    // {
-    //     return nums[i];
-    // }
-    // else if (size == 2)
-    // {
-    //     return max(nums[i], nums[i + 1]);
-    // }
 
-    // else if (size >= 3)
-    // {
-    //     sort(nums.begin(), nums.end(), greater<int>());
-    //     max_third = nums[i + 2];
-    //     // cout << max_third << endl;
-    //     return max_third;
-    // }
-    // for (auto i : nums)
-    // {
-    //     cout << i << " ";
-    // }
-    // return max_third;
-    // sort(nums.begin(), nums.end(), greater<int>());
     for (int i = 0; i < size; ++i)
     {
         m[nums[i]]++;
