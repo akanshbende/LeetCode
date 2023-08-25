@@ -21,10 +21,28 @@ vector<int> sortArray(vector<int> &nums)
 
     return v;
 }
+
+vector<int> sortArrayByPriorityQueue(vector<int> &nums)
+{
+    int n = nums.size();
+    priority_queue<int> pq;
+
+    for (auto num : nums)
+    {
+        pq.push(num);
+    }
+    for (int i = n - 1; i >= 0; --i)
+    {
+        nums[i] = pq.top();
+        pq.pop();
+    }
+    return nums;
+}
+
 int main()
 {
     vector<int> v = {5, 2, 3, 1};
-    vector<int> ans = sortArray(v);
+    vector<int> ans = sortArrayByPriorityQueue(v);
 
     for (auto num : ans)
     {
