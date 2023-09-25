@@ -1,29 +1,69 @@
 // https://leetcode.com/problems/roman-to-integer/
+#include <iostream>
+#include <bits/stdc++.h>
+using namespace std;
 
-class Solution
+int integerValue(char ch)
 {
-public:
-    int romanToInt(string s)
-    {
-        int n = s.length();
-        int sum = 0;
-        unordered_map<char, int> m{
-            {'I', 1}, {'V', 5}, {'X', 10}, {'L', 50}, {'C', 100}, {'D', 500}, {'M', 1000}};
+    if (ch == 'I')
+        return 1;
+    if (ch == 'V')
+        return 5;
+    if (ch == 'X')
+        return 10;
+    if (ch == 'L')
+        return 50;
+    if (ch == 'C')
+        return 100;
+    if (ch == 'D')
+        return 500;
+    if (ch == 'M')
+        return 1000;
 
-        for (int i = 0; i < n; ++i)
+    return -1;
+}
+int romanToInteger(string &str)
+{
+    int result = 0;
+
+    for (int i = 0; i < str.length(); i++)
+    {
+        int s1 = integerValue(str[i]);
+
+        if (i + 1 < str.length())
         {
-            if (m[s[i]] < m[s[i + 1]])
+            int s2 = integerValue(str[i + 1]);
+            if (s1 >= s2)
             {
-                sum -= m[s[i]];
+                // VI
+                result = result + s1;
             }
             else
             {
-                sum += m[s[i]];
+                // IV
+                result = result + s2 - s1;
+                i++;
             }
         }
-        return sum;
+        else
+        {
+            result = result + s1;
+        }
     }
-};
+    return result;
+}
+int romanToInt(string s)
+{
+    return romanToInteger(s);
+}
+
+int main()
+{
+    string str = "CD";
+    cout << romanToInt(str) << endl;
+
+    return 0;
+}
 
 //  if(s[i]=='C' && (s[i+1]=='M' || s[i+1]=='D')){
 //         sum-=100;
