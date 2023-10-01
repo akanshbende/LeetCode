@@ -1,47 +1,7 @@
 #include <iostream>
 #include <bits/stdc++.h>
 using namespace std;
-//  316. Remove Duplicate Letters
-
-// https://leetcode.com/problems/remove-duplicate-letters/description/?envType=daily-question&envId=2023-09-26
-
-//================STRING Approach O(N)===============
-string removeDuplicateLetters(string s)
-{
-    int n = s.length();
-    vector<int> lastIndex(26);
-    vector<bool> taken(26, false);
-    string result = "";
-    // bcab
-    for (int i = 0; i < n; i++)
-    {
-        char ch = s[i];
-        lastIndex[ch - 'a'] = i;
-    }
-
-    for (int i = 0; i < n; i++)
-    {
-        char ch = s[i];
-        int idx = ch - 'a';
-        if (taken[idx] == true)
-        {
-            continue;
-        }
-        // bcabc (enterd in while loop)
-        // bcab  (dont enter in while loop)
-        while (!result.empty() > 0 && result.back() > ch && lastIndex[result.back() - 'a'] > i)
-        {
-            result.pop_back();
-            taken[result.back() - 'a'] = false; // abcabc :- bc a ,pop c & b, and make visited of c & b false;
-        }
-        result.push_back(ch);
-        taken[ch - 'a'] = true; // bc a , make taken[a]=true
-    }
-    return result;
-}
-
-//===============STACK Approach==============
-string removeDuplicateLettersStack(string s)
+string smallestSubsequence(string s)
 {
     int n = s.length();
     vector<int> lastIndex(26, -1);   // Store the last index of each character
@@ -92,9 +52,8 @@ string removeDuplicateLettersStack(string s)
 }
 int main()
 {
-    string s = "bcab";
-    cout << removeDuplicateLetters(s) << endl;
-    cout << removeDuplicateLettersStack(s) << endl;
-    // cout << 'c' - 'a';
+    string s = "bcabc";
+    cout << smallestSubsequence(s) << endl;
+
     return 0;
 }

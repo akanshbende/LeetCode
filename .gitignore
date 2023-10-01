@@ -3,6 +3,7 @@ temp.cpp
 *.exe
 
 /.vscode
+/BrainF
 
 Findduplicates.cpp
 
