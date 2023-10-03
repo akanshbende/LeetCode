@@ -1,8 +1,9 @@
 #include <iostream>
 #include <bits/stdc++.h>
 using namespace std;
-// TC: O(N^2)
-// SC: O(1)
+// BRUTFORCE
+//  TC: O(N^2)
+//  SC: O(1)
 bool find132pattern1(vector<int> &nums)
 {
     int n = nums.size();
@@ -21,7 +22,7 @@ bool find132pattern1(vector<int> &nums)
     return false;
 }
 
-// Optimize Solution
+// Optimize Solution (Using Stack)
 
 bool find132pattern2(vector<int> &nums)
 {
@@ -43,7 +44,7 @@ bool find132pattern2(vector<int> &nums)
             {
                 st.pop();
             }
-            if (!st.empty() && st.top() <= nums[j])
+            if (!st.empty() && st.top() < nums[j])
             {
                 return true;
             }
@@ -55,8 +56,14 @@ bool find132pattern2(vector<int> &nums)
     }
     return false;
 }
+
 int main()
 {
-
+    vector<int> v = {1, 2, 3, 4};
+    vector<int> v2 = {3, 1, 4, 2};
+    string ans = find132pattern1(v) ? "True" : "False";
+    cout << ans << endl;
+    string ansStack = find132pattern2(v2) ? "True" : "False";
+    cout << ansStack << endl;
     return 0;
 }
