@@ -5,6 +5,8 @@
 using namespace std;
 void Solve(int idx, vector<int> &res, vector<vector<int>> &ans, vector<int> &nums, int n)
 {
+    // TC :=  O(2^N)
+    // SC  := O(N) -max stack space = no recursion calls
     if (idx == n)
     {
         ans.push_back(res);
