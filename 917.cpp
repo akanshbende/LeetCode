@@ -1,29 +1,41 @@
 #include <iostream>
 #include <bits/stdc++.h>
 using namespace std;
+
+// TWO POINTER APPROACH
 string reverseOnlyLetters(string s)
 {
-    string res = "";
-    for (auto ch : s)
+    // string ans="";
+    // for(auto ch:s){
+    //     if(ch)
+    // }
+    int i = 0;
+    int j = s.length();
+    while (i <= j)
     {
-        char chr = ch;
-        int ans = isalpha(chr);
-        if (ans == 2)
+        bool start = isalpha(s[i]);
+        bool end = isalpha(s[j]);
+        if (start && end)
         {
-            ans += ch;
+            swap(s[i], s[j]);
+            i++;
+            j--;
+        }
+        else if (!start)
+        {
+            i++;
         }
         else
         {
-
-            reverse(res.begin(), res.end());
+            j--;
         }
     }
-    return res;
+    return s;
 }
 int main()
 {
     string s = "ab-cd";
     cout << reverseOnlyLetters(s) << endl;
 
-       return 0;
+    return 0;
 }
